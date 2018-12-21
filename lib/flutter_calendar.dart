@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 import 'package:intl/intl.dart';
+import 'package:cuecladapp/utils/constant.dart';
 import 'package:flutter_calendar/calendar_tile.dart';
 import 'package:date_utils/date_utils.dart';
 import 'package:cuecladapp/utils/themeColor.dart';
@@ -135,7 +136,9 @@ class _CalendarState extends State<Calendar> {
                           alignment: Alignment.centerLeft,
                           child: new IconButton(
                             onPressed: () {
-                              setState(() {
+                              ////// chetan added this condition
+                              if (ConstantUtil.calendarDateSelected==false) {
+                                setState(() {
                                 var firstDateOfNewMonth =
                                 Utils.firstDayOfMonth(_selectedDate);
                                 if (1 < _selectedDate.day) {
@@ -152,6 +155,8 @@ class _CalendarState extends State<Calendar> {
                                       _selectedDate);
                                 }
                               });
+                              }
+                              
                             },
                             icon: new Icon(Icons.chevron_left,
                                 color: Colors.white),
@@ -164,7 +169,9 @@ class _CalendarState extends State<Calendar> {
                           alignment: Alignment.centerRight,
                           child: new IconButton(
                             onPressed: () {
-                              setState(() {
+                              ////// chetan added this condition
+                              if (ConstantUtil.calendarDateSelected==false) {
+                                 setState(() {
                                 var lastDateOfNewMonth =
                                 Utils.lastDayOfMonth(_selectedDate);
                                 print(
@@ -184,6 +191,7 @@ class _CalendarState extends State<Calendar> {
                                       _selectedDate);
                                 }
                               });
+                              }
                             },
                             icon: new Icon(Icons.chevron_right,
                                 color: Colors.white),
